@@ -1,181 +1,356 @@
 body {
-    font-family: "Plus Jakarta Sans", sans-serif !important;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .container {
-    flex: 1;
-}
-/*nav-bar*/
-.navbar{
-    height: 5rem;
-    background-color: white;
+  flex: 1;
 }
 
-.fa-compass{
-    color: #fe424d;
-    font-size: 2rem;
+/* Navbar */
+.navbar {
+  height: auto;
+  background-color: white;
+}
+.fa-compass {
+  color: #fe424d;
+  font-size: 2rem;
+}
+.nav-link {
+  color: #222222 !important;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.nav-link{
-    color: #222222 !important;
-}
-
-/* footer*/
-.f-info-links a {
-    text-decoration: none;
-    color: #222222;
-}
-
-.f-info-links a:hover {
-    text-decoration: underline;
-}
- 
-.f-info-links, 
-.f-info-socials,
-.f-info-brand {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.f-info-socials i {
-    margin-right: 1rem;
-    font-size: 1.2rem;
-}
-
+/* Footer */
 .f-info {
-    text-align: center;
-    height: 8rem;
-    background-color: #ebebeb;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
+  text-align: center;
+  height: auto;
+  padding: 1rem 0;
+  background-color: #ebebeb;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+}
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+.f-info-socials i {
+  margin: 0 0.5rem;
+  font-size: 1.3rem;
+  color: #222;
 }
 
-/*cards*/
+/* Cards */
 .listing-card {
-    border: none !important;
-    margin-bottom: 2rem;
+  border: none !important;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
 }
-
-.card-img-top{
-    border-radius: 1rem !important;
-    width: 100% !important;
-    object-fit: cover !important;
+.listing-card:hover {
+  transform: translateY(-5px);
 }
-
+.card-img-top {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
 .card-body {
-    padding: 0  !important;
+  padding: 0 !important;
 }
-
 .card-text p {
-    font-weight: 400 !important;
+  font-weight: 400 !important;
 }
-
 .listing-link {
-    text-decoration: none;
+  text-decoration: none;
+  color: inherit;
 }
 
-
-/* card Effect */
+/* Card Effect */
 .card-img-overlay {
-    opacity: 0;
+  opacity: 0;
+}
+.card-img-overlay:hover {
+  opacity: 0.2;
+  background-color: white;
 }
 
-.card-img-overlay:hover{
-    opacity: 0.2;
-    background-color: white;
-}
-
-/* add and edit  button */
+/* Add and Edit Button */
 .add-btn {
-    background-color: #fe424d !important;
-    border: none !important;
+  background-color: #fe424d !important;
+  border: none !important;
 }
 
-/* show page */
+/* Show Page */
 .show-img {
-    height: 30vh;
+  height: 30vh;
 }
-
 .btns {
-    display: flex;
+  display: flex;
 }
-
 .show-card {
-    padding-left: 0;
-    padding-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
-
-
 #map {
-    height: 400px;
-    width: 100vh;
+  height: 400px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Search */
+.search-btn {
+  background-color: #fe424d;
+  color: #fff;
+  border-radius: 25px;
+  padding: 0.4rem 1rem;
+}
+.search-btn:hover {
+  background-color: #e63946;
+  color: #fff;
+}
+.search-btn i {
+  margin-right: 0.5rem;
+}
+.search-inp {
+  border-radius: 25px;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+}
+
+/* Filters Section */
+#filters {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  overflow-x: auto;
+  padding: 0.8rem 0.5rem;
+  scrollbar-width: none; /* Firefox */
+}
+#filters::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.filter {
+  text-align: center;
+  flex: 0 0 auto;
+  opacity: 0.7;
+}
+.filter:hover {
+  opacity: 1.2;
+  cursor: pointer;
+}
+.filter div {
+  font-size: 1.4rem;
+}
+.filter p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+.tax-info {
+  display: none;
+}
+.tax-toggle {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: auto;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .navbar .nav-link {
+    font-size: 0.9rem;
+  }
+  .search-inp {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.8rem;
+  }
+  .search-btn {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.8rem;
+  }
+  .f-info {
+    font-size: 0.85rem;
+    flex-direction: column;
+  }
+  #filters {
+    gap: 0.8rem;
+  }
+  .filter div {
+    font-size: 1.2rem;
+  }
+}
+
+.filters-wrapper {
+  position: relative;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.scroll-left {
+  left: 5px;
+}
+
+.scroll-right {
+  right: 5px;
+}
+
+.scroll-btn i {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Mobile Only */
+@media (min-width: 768px) {
+  .scroll-btn {
+    display: none; /* Desktop me arrows hide */
+  }
+}
+
+.about-hero{
+  min-height: 46vh;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.35)),
+    url("https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=1600&auto=format&fit=crop") center/cover no-repeat;
+}
+.about-stat h3{ font-weight: 700; }
+.object-fit-cover{ object-fit: cover; }
+
+@media (max-width: 576px){
+  .about-hero{ min-height: 38vh; }
+}
+
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.starability-result {
+  font-size: 1.2rem;
+  color: #f5a623;
 }
 
 
-
-.search-btn { 
-    background-color: #fe424d;
-    color: #fff;
-    border-radius: 25px;
-    padding: 0 1rem 0 1rem;
+/* Review Cards */
+.review-card {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease-in-out;
 }
-.search-btn :hover { 
-    background-color: #fe424d;
-    color: #fff;
-}
-
-.search-btn  i {
-    display: inline;
-    margin-right: 0.5rem;
+.review-card:hover {
+  transform: translateY(-3px);
 }
 
-.search-inp { 
-    border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
+/* Avatar */
+.review-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #222;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+/* Content */
+.review-content {
+  flex-grow: 1;
+}
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.review-username {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.review-text {
+  margin: 6px 0 10px;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Rating Stars alignment */
+.starability-result {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Mobile Responsive Fix for Review Card */
+@media (max-width: 576px) {
+  .review-card {
+    flex-direction: column;   /* avatar ऊपर और content नीचे आ जाएगा */
+    align-items: center;      /* सब center align हो जाएगा */
+    text-align: center;       /* text भी center में */
+  }
+
+  .review-avatar {
+    margin-right: 0;          /* right margin हटाओ */
+    margin-bottom: 10px;      /* avatar और content के बीच space */
+  }
+
+  .review-header {
+    flex-direction: column;   /* username और stars नीचे-नीचे */
+    gap: 4px;
+  }
+
+  .review-username {
     font-size: 1rem;
-} 
+  }
 
+  .review-text {
+    font-size: 0.9rem;
+  }
+}
 
-#filters { 
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-    }
+/* By default search right side me rahe */
+.navbar-search {
+  margin-left: auto;
+}
 
-    .filter {
-        text-align: center;
-        margin-right: 2rem;
-        margin-top: 2rem;
-        opacity: 0.7;
-    }
-
-    .filter:hover {
-        opacity: 1.5;
-        cursor: pointer;
-    }
-
-    .filter p {
-        font-size: 0.8rem;
-    }
-
-    .tax-info {
-        display: none;
-    }
-    
-    .tax-toggle {
-        border: 1px solid black;
-        border-radius: 1rem;
-        height: 3rem;
-        padding: 1rem;
-        margin-left: 2rem;
-        display: flex;
-        align-items: center;
-    }
+/* Desktop/Laptop view me search center me */
+@media (min-width: 768px) {
+  .navbar-search {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
