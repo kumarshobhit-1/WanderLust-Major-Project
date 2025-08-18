@@ -305,6 +305,12 @@ Wanderlust is a scalable, production-ready Airbnb-like platform built with Node.
 ## 👨‍💻 Author
 
 Shobhit Kumar 
-📧 Email: shobhitkumar1437@gmail.com
-🔗 GitHub: [Shobhit Kumar](https://github.com/kumarshobhit-1/).
-🔗 LinkedIn: [Shobhit Kumar](https://www.linkedin.com/in/shobhit-kumar1/).
+- 📧 Email: shobhitkumar1437@gmail.com
+- 🔗 GitHub: [Shobhit Kumar](https://github.com/kumarshobhit-1/)
+- 🔗 LinkedIn: [Shobhit Kumar](https://www.linkedin.com/in/shobhit-kumar1/)
+
+---
+
+## 🛡 Copyright Notice
+
+© 2025 Shobhit Kumar — This Website is developed and maintained by Shobhit Kumar. All rights reserved.
