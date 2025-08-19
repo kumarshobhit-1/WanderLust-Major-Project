@@ -1,5 +1,7 @@
 # 🌍 Wanderlust – Travel & Stay Booking Platform
 
+<img src="https://komarev.com/ghpvc/?username=kumarshobhit-1&label=Visitors&color=blue" alt="Visitors"/>
+
 ## 1. Project Overview
 
 Wanderlust is an online platform that allows users to find, book, and review unique places to stay around the world. It is a clone of a website like Airbnb. Users can list new accommodations, view existing ones, and leave reviews based on their experiences.
