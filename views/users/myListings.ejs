@@ -1,0 +1,43 @@
+<% layout("/layouts/boilerplate") %> 
+<link rel="stylesheet" href="/css/style.css">
+
+<div class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold">My Listings</h3>
+    <a href="/listings/new" class="btn btn-danger add-btn">
+      <i class="fas fa-plus-circle"></i> Add New
+    </a>
+  </div>
+
+  <% if (listings.length === 0) { %>
+    <div class="alert alert-info text-center py-4 rounded-3 shadow-sm">
+      <i class="bi bi-info-circle fs-4"></i>
+      <p class="mt-2 mb-0">You have not added any listings yet.</p>
+    </div>
+  <% } else { %>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-3">
+      <% listings.forEach(listing => { %>
+        <div class="col">
+          <a href="/listings/<%= listing._id %>" class="listing-link text-decoration-none text-dark">
+            <div class="card listing-card h-100 shadow-sm">
+              <% if (listing.image) { %>
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 16rem; object-fit: cover;">
+              <% } else { %>
+                <div class="card-img-top bg-light d-flex justify-content-center align-items-center" style="height: 16rem;">
+                  <i class="bi bi-image text-muted fs-1"></i>
+                </div>
+              <% } %>
+              <div class="card-body">
+                <p class="card-text mb-0">
+                  <b><%= listing.title %></b> <br>
+                  ₹ <%= listing.price.toLocaleString("en-IN") %> / night
+                  <i class="tax-info text-muted"> &nbsp;+18% GST</i>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
