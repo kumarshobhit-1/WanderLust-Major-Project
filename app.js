@@ -100,6 +100,8 @@ app.get('/privacy', (req, res) => {
   res.render("privacy.ejs"); 
 });
 
+const userDashboardRoutes = require("./routes/dashboard");
+app.use("/", userDa
 
 app.all(/.*/,(req, res, next) => {
     next(new ExpressError(404, "Page Not Found!"));
