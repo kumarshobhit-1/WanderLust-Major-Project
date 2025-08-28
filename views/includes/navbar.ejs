@@ -30,19 +30,41 @@
 
       <!-- Right links -->
       <ul class="navbar-nav ms-md-3 mt-2 mt-md-0">
-        <li class="nav-item">
-          <a class="nav-link" href="/listings/new"><i class="fa-solid fa-house"></i> Host</a>
-        </li>
-        <% if (!currUser) { %>
-          <li class="nav-item"><a class="nav-link" href="/signup"><i class="fa-solid fa-user-plus"></i> Sign up</a></li>
-          <li class="nav-item"><a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> Log in</a></li>
-        <% } %>
-        <% if (currUser) { %>
-          <li class="nav-item"><a class="nav-link" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
-        <% } %>
+  <li class="nav-item">
+    <a class="nav-link" href="/listings/new">
+      <i class="fa-solid fa-house"></i> Host
+    </a>
+  </li>
+
+  <% if (!currUser) { %>
+    <!-- Agar user login nahi hai -->
+    <li class="nav-item">
+      <a class="nav-link" href="/signup">
+        <i class="fa-solid fa-user-plus"></i> Sign up
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/login">
+        <i class="fa-solid fa-right-to-bracket"></i> Log in
+      </a>
+    </li>
+  <% } else { %>
+    <!-- Agar user login hai -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa-solid fa-gauge"></i> Dashboard
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dashboardDropdown">
+        <li><a class="dropdown-item" href="/dashboard"><i class="fa-solid fa-user"></i> Profile</a></li>
+        <li><a class="dropdown-item" href="/settings"><i class="fa-solid fa-gear"></i> Settings</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
       </ul>
+    </li>
+  <% } %>
+</ul>
+
+
     </div>
   </div>
 </nav>
-
-
