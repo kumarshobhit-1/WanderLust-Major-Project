@@ -1,0 +1,71 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-12 col-md-3 mb-4">
+      <div class="card shadow-sm p-3 rounded-3 h-100">
+        <div class="text-center">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" 
+               alt="User Avatar" class="img-fluid rounded-circle mb-3" width="100">
+          <h5 class="mb-1"><%= user.username %></h5>
+          <p class="text-muted small"><%= user.email %></p>
+        </div>
+        <hr>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="/listings">🏠 Wanderlust Your Home</a></li>
+          <li class="list-group-item"><a href="/listings/new">➕ Add Listing</a></li>
+          <li class="list-group-item"><a href="/my-listings">📋 My Listings</a></li>
+          <li class="list-group-item"><a href="/settings">⚙️ Account Settings</a></li>
+          <li class="list-group-item"><a href="/logout" class="text-danger">🚪 Logout</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-12 col-md-9">
+      <div class="card shadow-sm p-4 rounded-3">
+        <h4 class="mb-3">Welcome, <%= user.username %> 👋</h4>
+        <p class="lead">Here is your personalized dashboard. Manage your account and activities easily.</p>
+
+        <div class="row g-3 mt-2">
+          <!-- Card 1 -->
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card text-center p-3 shadow-sm rounded-3 h-100">
+              <h6>My Listings</h6>
+              <p class="small">View and manage your added properties.</p>
+              <a href="/my-listings" class="btn btn-primary btn-sm">View</a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card text-center p-3 shadow-sm rounded-3 h-100">
+              <h6>All Listings</h6>
+              <p class="small">Browse listings shared by our community.</p>
+              <a href="/listings" class="btn btn-info btn-sm">View</a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card text-center p-3 shadow-sm rounded-3 h-100">
+              <h6>Add New</h6>
+              <p class="small">Create a new listing and share with others.</p>
+              <a href="/listings/new" class="btn btn-success btn-sm">Add</a>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card text-center p-3 shadow-sm rounded-3 h-100">
+              <h6>Account Settings</h6>
+              <p class="small">Update your profile and change password.</p>
+              <a href="/settings" class="btn btn-warning btn-sm">Edit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
