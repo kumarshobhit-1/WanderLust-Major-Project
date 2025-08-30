@@ -65,7 +65,7 @@ body {
   object-fit: cover !important;
 }
 .card-body {
-  padding: 0 !important;
+  padding: 2 !important;
 }
 .card-text p {
   font-weight: 400 !important;
@@ -354,3 +354,5 @@ body {
     margin-right: auto;
   }
 }
+
+
