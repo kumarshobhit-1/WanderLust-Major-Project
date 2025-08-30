@@ -44,7 +44,7 @@ const createEmailTemplate = (options) => {
               </td></tr>
               <tr><td class="footer">
                 <p>&copy; ${new Date().getFullYear()} Wanderlust. All rights reserved.</p>
-                <p><a href="#">Unsubscribe</a> | <a href="http://localhost:8080/privacy">Privacy Policy</a></p>
+                <p><a href="#">Unsubscribe</a> | <a href="https://wanderlust-wy3w.onrender.com/privacy">Privacy Policy</a></p>
               </td></tr>
             </table>
           </td></tr>
@@ -69,7 +69,7 @@ const sendWelcome = async (to, username) => {
         preheader: 'Welcome to the Wanderlust community!',
         headline: `Welcome, ${username}!`,
         body: '<p>Thanks for joining Wanderlust. We are excited to have you on board. Start exploring amazing places now!</p>',
-        buttonLink: 'http://localhost:8080/listings',
+        buttonLink: 'https://wanderlust-wy3w.onrender.com/listings',
         buttonText: 'Explore Listings'
     });
     return transporter.sendMail({ from: `"Wanderlust" <${process.env.EMAIL_USER}>`, to, subject: 'Welcome to Wanderlust!', html });
@@ -80,7 +80,7 @@ const sendListingCreatedEmail = async (userEmail, username, listing) => {
         preheader: `Your new listing, "${listing.title}", is live!`,
         headline: 'Listing Created Successfully!',
         body: `<p>Hello ${username},</p><p>Congratulations! Your new listing, "<b>${listing.title}</b>", has been successfully created on Wanderlust.</p>`,
-        buttonLink: `http://localhost:8080/listings/${listing._id}`,
+        buttonLink: `https://wanderlust-wy3w.onrender.com/listings/${listing._id}`,
         buttonText: 'View Your Listing'
     });
     return transporter.sendMail({ from: `"Wanderlust" <${process.env.EMAIL_USER}>`, to: userEmail, subject: '✔ Your Listing is Live!', html });
@@ -91,7 +91,7 @@ const sendListingUpdatedEmail = async (userEmail, username, listing) => {
         preheader: `Your listing, "${listing.title}", has been updated.`,
         headline: 'Listing Updated!',
         body: `<p>Hello ${username},</p><p>Your listing, "<b>${listing.title}</b>", has been successfully updated.</p>`,
-        buttonLink: `http://localhost:8080/listings/${listing._id}`,
+        buttonLink: `https://wanderlust-wy3w.onrender.com/listings/${listing._id}`,
         buttonText: 'View Changes'
     });
     return transporter.sendMail({ from: `"Wanderlust" <${process.env.EMAIL_USER}>`, to: userEmail, subject: '✔ Your Listing has been Updated', html });
@@ -111,7 +111,7 @@ const sendPasswordResetEmail = async (email, username, token) => {
         preheader: 'Reset your password for Wanderlust.',
         headline: 'Password Reset Request',
         body: `<p>Hello ${username},</p><p>You are receiving this because you (or someone else) have requested the reset of the password for your account.</p><p>If you did not request this, please ignore this email.</p>`,
-        buttonLink: `http://localhost:8080/reset-password/${token}`,
+        buttonLink: `https://wanderlust-wy3w.onrender.com/reset-password/${token}`,
         buttonText: 'Reset Your Password'
     });
     return transporter.sendMail({ from: `"Wanderlust" <${process.env.EMAIL_USER}>`, to: email, subject: 'Wanderlust - Password Reset', html });
@@ -131,7 +131,7 @@ const sendProfileUpdatedEmail = async (email, username) => {
         preheader: 'Your Wanderlust profile details have been updated.',
         headline: 'Profile Updated Successfully!',
         body: `<p>Hello ${username},</p><p>This is a confirmation that your account details have been recently updated.</p><p>If you did not make this change, please contact our support team immediately.</p>`,
-        buttonLink: `http://localhost:8080/dashboard`,
+        buttonLink: `https://wanderlust-wy3w.onrender.com/dashboard`,
         buttonText: 'View Your Profile'
     });
     return transporter.sendMail({ from: `"Wanderlust" <${process.env.EMAIL_USER}>`, to: email, subject: '✔ Your Wanderlust Profile has been Updated', html });
