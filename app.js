@@ -15,7 +15,10 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
-
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const csurf = require('csurf');
+const cookieParser = require('cookie-parser');
 
 
 const listingRouter = require("./routes/listings.js");
@@ -40,7 +43,56 @@ app.use(express.urlencoded({extended : true}));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(cookieParser());
 
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "default-src": ["'self'"],
+      "script-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://cdn.jsdelivr.net",
+        "https://api.mapbox.com",
+        "'unsafe-eval'",
+      ],
+      "script-src-attr": ["'unsafe-inline'"],
+      "style-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://cdn.jsdelivr.net",
+        "https://cdnjs.cloudflare.com",   // Font Awesome
+        "https://api.mapbox.com"
+      ],
+      "worker-src": ["'self'", "blob:"],
+      "img-src": [
+        "'self'",
+        "data:",
+        "https://images.unsplash.com",
+        "https://plus.unsplash.com",
+        "https://unsplash.com",
+        "https://res.cloudinary.com",
+        "https://cdn-icons-png.flaticon.com" 
+      ],
+      "connect-src": [
+        "'self'",
+        "https://api.mapbox.com",
+        "https://events.mapbox.com"
+      ],
+      "font-src": [
+        "'self'",
+        "https://cdnjs.cloudflare.com"   // Font Awesome fonts
+      ]
+    },
+  })
+);
+
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 200
+});
+app.use(limiter);
 
 const store = MongoStore.create({
     mongoUrl : dbUrl,
@@ -107,6 +159,9 @@ app.get('/settings', (req, res) => {
   res.render("settings.ejs"); 
 });
 
+app.get("/trust-and-safety", (req, res) => {
+    res.render("users/trust-and-safety"); 
+});
         
 app.all(/.*/,(req, res, next) => {
     next(new ExpressError(404, "Page Not Found!"));
