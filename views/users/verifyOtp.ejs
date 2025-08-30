@@ -1,0 +1,46 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-6">
+            <div class="card shadow-sm p-4">
+                <div class="card-body p-4 p-md-5 text-center">
+                    
+                    <div class="mb-3">
+                        <i class="fa-solid fa-shield-halved fs-1 text-primary"></i>
+                    </div>
+                    
+                    <h3 class="mb-3 fw-bold">Enter OTP</h3>
+                    <p class="text-muted mb-4">
+                        We sent a 6-digit verification code to <br><strong><%= email %></strong>.
+                    </p>
+
+                    <form action="/verify-otp" method="post" class="needs-validation" novalidate>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <input type="hidden" name="email" value="<%= email %>">
+                        
+                        <div class="mb-4">
+                            <label for="otp" class="form-label visually-hidden">OTP</label>
+                            <input id="otp" name="otp" type="text" class="form-control form-control-lg text-center" maxlength="6" required placeholder="_ _ _ _ _ _">
+                            <div class="invalid-feedback text-start">Please enter the 6-digit OTP.</div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg" type="submit">Verify OTP</button>
+                        </div>
+                    </form>
+
+                    <div class="mt-4">
+                        <p class="text-muted mb-1">Didn't receive the code?</p>
+                        <form action="/resend-otp" method="post" class="d-inline">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <input type="hidden" name="email" value="<%= email %>">
+                            <button class="btn btn-link p-0">Resend OTP</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
