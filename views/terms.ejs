@@ -1,198 +1,83 @@
-<% layout && layout("/layouts/boilerplate") %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Terms & Conditions • Wanderlust</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    .legal-hero{background:#0d1321;color:#fff}
-    .legal-card{border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.08)}
-    .toc a{color:#0d6efd;text-decoration:none}
-    .toc a:hover{text-decoration:underline}
-    .section h2{scroll-margin-top:90px}
-    .muted{color:#6c757d}
-  </style>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <!-- HERO -->
-  <section class="legal-hero py-5">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-12 col-lg-8">
-          <h1 class="fw-bold mb-2">Terms & Conditions</h1>
-          <p class="mb-0">Last updated: <strong>16 August 2025</strong></p>
-          <p class="muted mb-0">Welcome to Wanderlust! Please read these terms carefully — by using the platform, you agree to them.</p>
-        </div>
-        <div class="col-12 col-lg-4 text-lg-end">
-          <a href="/signup" class="btn btn-light btn-sm rounded-pill me-2">Create account</a>
-          <a href="/privacy" class="btn btn-outline-light btn-sm rounded-pill">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<% layout("/layouts/boilerplate") %>
 
-  <!-- CONTENT -->
-  <main class="container my-4 my-md-5">
-    <div class="row g-4">
-      <!-- TOC -->
-      <aside class="col-12 col-lg-4">
+<style>
+  /* Style for making the Table of Contents sticky on larger screens */
+  @media (min-width: 992px) {
+    .sticky-lg-top {
+      position: sticky;
+      top: 100px; /* Adjust based on your navbar height */
+      z-index: 1000;
+    }
+  }
+</style>
+
+<section class="legal-hero py-5" style="background-color: #f8f9fa;">
+  <div class="container text-center">
+    <h1 class="fw-bold mb-2">Terms & Conditions</h1>
+    <p class="text-muted mb-0">Last updated: <strong>30 August 2025</strong></p>
+  </div>
+</section>
+
+<main class="container my-4 my-md-5">
+  <div class="row g-5">
+    <aside class="col-12 col-lg-4">
+      <div class="sticky-lg-top">
         <div class="legal-card p-3 p-md-4">
           <h5 class="mb-3">Table of Contents</h5>
           <ul class="toc list-unstyled small mb-0">
-            <li><a href="#intro">1. Acceptance of Terms</a></li>
+            <li><a href="#acceptance">1. Acceptance of Terms</a></li>
             <li><a href="#eligibility">2. Eligibility & Accounts</a></li>
-            <li><a href="#platform">3. Platform Use</a></li>
-            <li><a href="#listings">4. Listings & Bookings</a></li>
-            <li><a href="#payments">5. Payments, Fees & Taxes</a></li>
-            <li><a href="#cancellation">6. Cancellations & Refunds</a></li>
-            <li><a href="#host">7. Host Obligations</a></li>
-            <li><a href="#guest">8. Guest Obligations</a></li>
-            <li><a href="#content">9. Content & IP</a></li>
-            <li><a href="#reviews">10. Reviews & Ratings</a></li>
-            <li><a href="#prohibited">11. Prohibited Activities</a></li>
-            <li><a href="#thirdparty">12. Third-Party Services</a></li>
-            <li><a href="#privacy">13. Privacy & Data</a></li>
-            <li><a href="#warranty">14. Disclaimers</a></li>
-            <li><a href="#liability">15. Limitation of Liability</a></li>
-            <li><a href="#indemnity">16. Indemnification</a></li>
-            <li><a href="#termination">17. Termination</a></li>
-            <li><a href="#law">18. Governing Law & Disputes</a></li>
-            <li><a href="#changes">19. Changes to Terms</a></li>
-            <li><a href="#contact">20. Contact</a></li>
+            <li><a href="#payments">3. Payments, Fees & Taxes</a></li>
+            <li><a href="#cancellations">4. Cancellations & Refunds</a></li>
+            <li><a href="#obligations">5. Host & Guest Obligations</a></li>
+            <li><a href="#liability">6. Limitation of Liability</a></li>
+            <li><a href="#law">7. Governing Law & Disputes</a></li>
+            <li><a href="#contact">8. Contact Information</a></li>
           </ul>
         </div>
-      </aside>
+      </div>
+    </aside>
 
-      <!-- BODY -->
-      <section class="col-12 col-lg-8">
-        <div class="legal-card p-3 p-md-4 section" id="intro">
-          <h2 class="h4">1. Acceptance of Terms</h2>
-          <p>By using the Wanderlust (“we”, “us”, “our”) platform, you agree to these Terms & Conditions. If you do not agree, please do not use the services.</p>
-        </div>
+    <section class="col-12 col-lg-8">
+      <div class="legal-card p-3 p-md-4 section" id="acceptance">
+        <h2 class="h4">1. Acceptance of Terms</h2>
+        <p>Welcome to Wanderlust! By accessing or using our platform, you agree to be bound by these Terms & Conditions and our Privacy Policy. If you do not agree, please do not use our services.</p>
+      </div>
 
-        <div class="legal-card p-3 p-md-4 section mt-3" id="eligibility">
-          <h2 class="h4">2. Eligibility & Accounts</h2>
-          <ul>
-            <li>You must be at least 18 years of age (or the age of majority under local law).</li>
-            <li>All information provided while creating an account must be accurate, complete, and up to date.</li>
-            <li>You are responsible for safeguarding your account credentials.</li>
-          </ul>
-        </div>
+      <div class="legal-card p-3 p-md-4 section mt-4" id="eligibility">
+        <h2 class="h4">2. Eligibility & Accounts</h2>
+        <p>You must be at least 18 years old to create an account. You are responsible for maintaining the accuracy of your account information and safeguarding your password.</p>
+      </div>
 
-        <div class="legal-card p-3 p-md-4 section mt-3" id="platform">
-          <h2 class="h4">3. Platform Use</h2>
-          <p>Wanderlust is an online marketplace that connects Hosts and Guests. We do not guarantee ownership, quality, or legal compliance of any listing; the Host is solely responsible for related claims.</p>
-        </div>
+      <div class="legal-card p-3 p-md-4 section mt-4" id="payments">
+        <h2 class="h4">3. Payments, Fees & Taxes</h2>
+        <p>All fees, including listing prices, service fees, and applicable taxes, will be clearly displayed before you book or publish a listing. Payments are processed through a secure third-party gateway. Hosts are responsible for their own tax obligations.</p>
+      </div>
 
-        <div class="legal-card p-3 p-md-4 section mt-3" id="listings">
-          <h2 class="h4">4. Listings & Bookings</h2>
-          <ul>
-            <li>Hosts must provide truthful, up-to-date, and non-misleading descriptions/photos in listings.</li>
-            <li>Booking acceptance depends on host availability and policies.</li>
-            <li>House rules, check-in/out times, and occupancy limits must be followed.</li>
-          </ul>
-        </div>
+      <div class="legal-card p-3 p-md-4 section mt-4" id="cancellations">
+        <h2 class="h4">4. Cancellations & Refunds</h2>
+        <p>Cancellation and refund policies are set by the host and vary by listing. Please review the specific policy for a property before completing your booking.</p>
+      </div>
 
-        <div class="legal-card p-3 p-md-4 section mt-3" id="payments">
-          <h2 class="h4">5. Payments, Fees & Taxes</h2>
-          <ul>
-            <li>All fees may be displayed in INR; actual charges may vary based on payment provider/FX conversion.</li>
-            <li>Guest/Host service fees, cleaning fees, and taxes (such as GST) may apply.</li>
-            <li>Payments will be processed through secure third-party gateways.</li>
-            <li>Hosts are responsible for complying with applicable tax/law requirements (e.g., PAN, GST, TDS).</li>
-          </ul>
-        </div>
+      <div class="legal-card p-3 p-md-4 section mt-4" id="obligations">
+        <h2 class="h4">5. Host & Guest Obligations</h2>
+        <p><strong>Hosts</strong> agree to provide a safe, clean, and accurately described space. <strong>Guests</strong> agree to respect the property, follow house rules, and leave the space in a reasonable condition.</p>
+      </div>
+      
+      <div class="legal-card p-3 p-md-4 section mt-4" id="liability">
+        <h2 class="h4">6. Limitation of Liability</h2>
+        <p>Wanderlust is a platform connecting hosts and guests. We are not liable for any incidents, damages, or disputes that may occur during a stay. Our total liability is limited to the amount of service fees paid to us in the preceding three months.</p>
+      </div>
 
-        <div class="legal-card p-3 p-md-4 section mt-3" id="cancellation">
-          <h2 class="h4">6. Cancellations & Refunds</h2>
-          <p>Each listing may have its own cancellation/refund policy, clearly shown before booking. No refunds apply for no-shows or policy violations.</p>
-        </div>
+      <div class="legal-card p-3 p-md-4 section mt-4" id="law">
+        <h2 class="h4">7. Governing Law & Disputes</h2>
+        <p>These Terms are governed by the laws of India. Any disputes will fall under the exclusive jurisdiction of the courts in New Delhi, India.</p>
+      </div>
 
-        <div class="legal-card p-3 p-md-4 section mt-3" id="host">
-          <h2 class="h4">7. Host Obligations</h2>
-          <ul>
-            <li>Comply with local laws, licenses, society rules, and safety compliance (smoke detector, emergency info).</li>
-            <li>Provide safe, clean, and accurately described facilities.</li>
-            <li>Inform promptly if a booking needs to be canceled.</li>
-          </ul>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="guest">
-          <h2 class="h4">8. Guest Obligations</h2>
-          <ul>
-            <li>Follow house rules, occupancy limits, noise, and damage policies.</li>
-            <li>You may be liable for damage or theft at the property.</li>
-            <li>Illegal activities are strictly prohibited.</li>
-          </ul>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="content">
-          <h2 class="h4">9. Content & Intellectual Property</h2>
-          <p>By posting your content (photos/text/reviews) on the platform, you grant us a worldwide, non-exclusive, royalty-free license to display, reproduce, and promote it.</p>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="reviews">
-          <h2 class="h4">10. Reviews & Ratings</h2>
-          <p>Reviews must be honest, respectful, and policy-compliant. Manipulation (fake reviews, incentivization) is prohibited. We may remove reviews violating policies.</p>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="prohibited">
-          <h2 class="h4">11. Prohibited Activities</h2>
-          <ul>
-            <li>Illegal content/activities, discrimination, harassment, malware/spam.</li>
-            <li>Platform scraping, reverse engineering, unauthorized automation.</li>
-            <li>Violation of intellectual property or privacy rights.</li>
-          </ul>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="thirdparty">
-          <h2 class="h4">12. Third-Party Services</h2>
-          <p>Third-party terms (e.g., payment gateways, map providers, KYC services) will apply separately.</p>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="privacy">
-          <h2 class="h4">13. Privacy & Data</h2>
-          <p>We process your information in accordance with our <a href="/privacy">Privacy Policy</a>. Using the platform indicates your consent to it.</p>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="warranty">
-          <h2 class="h4">14. Disclaimers</h2>
-          <p>Services are provided “as-is” and “as-available.” We do not guarantee uninterrupted or error-free services. Responsibility for claims related to listings/hosts/guests rests with the respective parties.</p>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="liability">
-          <h2 class="h4">15. Limitation of Liability</h2>
-          <p>We are not liable for indirect, incidental, or consequential damages. Our total liability will not exceed the service fees you paid in the last 3 months (as permitted by law).</p>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="indemnity">
-          <h2 class="h4">16. Indemnification</h2>
-          <p>You agree to indemnify us against any claims, damages, or liabilities (including legal fees) arising from your violation of these Terms, violation of law, or infringement of third-party rights.</p>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="termination">
-          <h2 class="h4">17. Termination</h2>
-          <p>We may suspend or terminate your access at any time, with or without notice, for any reason. You may also close your account at any time. Certain provisions (liability limits, IP, indemnity) will survive termination.</p>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="law">
-          <h2 class="h4">18. Governing Law & Disputes</h2>
-          <p>These Terms are governed by the laws of India. Disputes will fall under the exclusive jurisdiction of courts in <em>New Delhi, India</em> (unless a separate arbitration policy applies).</p>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="changes">
-          <h2 class="h4">19. Changes to Terms</h2>
-          <p>We may update the Terms from time to time. Changes will be effective immediately upon posting. Continued use indicates acceptance of updated Terms.</p>
-        </div>
-
-        <div class="legal-card p-3 p-md-4 section mt-3" id="contact">
-          <h2 class="h4">20. Contact</h2>
-          <p>For any questions, please contact us: <a href="mailto:legal@wanderlust.example">databse.patel@gmail.com</a></p>
-        </div>
-      </section>
-    </div>
-  </main>
-</body>
-</html>
+      <div class="legal-card p-3 p-md-4 section mt-4" id="contact">
+        <h2 class="h4">8. Contact Information</h2>
+        <p>For any questions about these terms, please contact us at <a href="mailto:webapp.wanderlust@gmail.com">webapp.wanderlust@gmail.com</a>.</p>
+      </div>
+    </section>
+  </div>
+</main>
