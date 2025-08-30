@@ -3,35 +3,128 @@
 <div class="row justify-content-center mt-5">
   <div class="col-12 col-sm-10 col-md-8 col-lg-6">
     <div class="card shadow-sm p-4">
-      <h2 class="text-center mb-4">Sign Up on Wanderlust</h2>
-      <form action="/signup" method="post" class="needs-validation" novalidate>
-        
-        <!-- Username -->
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input name="username" id="username" type="text" class="form-control" required/>
-          <div class="valid-feedback">Looks Good!</div>
-          <div class="invalid-feedback">Please Enter a valid Username!</div>
-        </div>
+        <h2 class="text-center mb-4 fw-bold">Sign Up on Wanderlust</h2>
+        <form action="/signup" method="post" class="needs-validation" novalidate>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
-        <!-- Email -->
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input name="email" id="email" type="email" class="form-control" required/>
-          <div class="invalid-feedback">Please Enter a valid Email!</div>
-        </div>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input name="username" id="username" type="text" class="form-control" required placeholder="Create a unique username"/>
+            <div class="valid-feedback">Looks Good!</div>
+            <div class="invalid-feedback">Please enter a valid username.</div>
+          </div>
 
-        <!-- Password -->
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input name="password" id="password" type="password" class="form-control" required/>
-          <div class="valid-feedback">Looks Good!</div>
-          <div class="invalid-feedback">Please Enter a valid Password!</div>
-        </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input name="email" id="email" type="email" class="form-control" required placeholder="Enter your valid email"/>
+            <div class="invalid-feedback">Please enter a valid email.</div>
+          </div>
 
-        <!-- Submit -->
-        <button class="btn btn-success w-100">Sign Up</button>
-      </form>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <div class="input-group">
+              <input name="password" id="password" type="password" class="form-control" required placeholder="Create a strong password"/>
+              <button class="btn btn-outline-secondary" type="button" id="togglePasswordBtn">
+                <i class="fa-solid fa-eye" id="togglePasswordIcon"></i>
+              </button>
+            </div>
+            <div class="invalid-feedback">Please enter a valid password.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <div class="input-group">
+                <input name="confirmPassword" id="confirmPassword" type="password" class="form-control" required placeholder="Confirm your password"/>
+                <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPasswordBtn">
+                  <i class="fa-solid fa-eye" id="toggleConfirmPasswordIcon"></i>
+                </button>
+            </div>
+            <div class="invalid-feedback">Passwords must match.</div>
+          </div>
+          
+          <hr class="my-4">
+
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="privacyPolicyCheck" required>
+            <label class="form-check-label" for="privacyPolicyCheck">
+              I have read and agree to the <a href="/privacy" target="_blank">Privacy Policy</a>.
+            </label>
+          </div>
+          
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="termsAndConditionsCheck" required>
+            <label class="form-check-label" for="termsAndConditionsCheck">
+              I have read and agree to the <a href="/terms" target="_blank">Terms & Conditions</a>.
+            </label>
+             <div class="invalid-feedback mt-2">You must agree to the terms and policies to continue.</div>
+          </div>
+
+           <button class="btn btn-success w-100">Sign Up</button>
+
+
+          <hr class="my-4">
+        <div class="text-center">
+          <p class="mb-0">You have an account ? <a href="/login"> Login</a></p>
+        </div>
+        </form>
     </div>
   </div>
 </div>
+
+<script>
+  // Select all form elements
+  const form = document.querySelector('form');
+  const password = document.getElementById('password');
+  const confirmPassword = document.getElementById('confirmPassword');
+  const privacyCheck = document.getElementById('privacyPolicyCheck');
+  const termsCheck = document.getElementById('termsAndConditionsCheck');
+
+  // ✅ NEW: Select toggle buttons and icons
+  const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+  const togglePasswordIcon = document.getElementById('togglePasswordIcon');
+  const toggleConfirmPasswordBtn = document.getElementById('toggleConfirmPasswordBtn');
+  const toggleConfirmPasswordIcon = document.getElementById('toggleConfirmPasswordIcon');
+
+  // ✅ NEW: Event listener for the main password toggle
+  togglePasswordBtn.addEventListener('click', function () {
+    const isPassword = password.type === 'password';
+    password.type = isPassword ? 'text' : 'password';
+    togglePasswordIcon.classList.toggle('fa-eye');
+    togglePasswordIcon.classList.toggle('fa-eye-slash');
+  });
+
+  // ✅ NEW: Event listener for the confirm password toggle
+  toggleConfirmPasswordBtn.addEventListener('click', function () {
+    const isPassword = confirmPassword.type === 'password';
+    confirmPassword.type = isPassword ? 'text' : 'password';
+    toggleConfirmPasswordIcon.classList.toggle('fa-eye');
+    toggleConfirmPasswordIcon.classList.toggle('fa-eye-slash');
+  });
+
+  // Event listener for form submission
+  form.addEventListener('submit', (e) => {
+    // Check if policies are accepted
+    if (!privacyCheck.checked || !termsCheck.checked) {
+      e.preventDefault();
+      alert('Please accept the Privacy Policy and Terms & Conditions to continue.');
+      return;
+    }
+
+    // Check for password match
+    if (password.value !== confirmPassword.value) {
+      e.preventDefault();
+      confirmPassword.setCustomValidity("Passwords do not match.");
+    } else {
+       confirmPassword.setCustomValidity("");
+    }
+  });
+
+  // Real-time feedback for password confirmation
+  confirmPassword.addEventListener('input', () => {
+    if (password.value !== confirmPassword.value) {
+      confirmPassword.setCustomValidity("Passwords do not match.");
+    } else {
+      confirmPassword.setCustomValidity("");
+    }
+  });
+</script>
