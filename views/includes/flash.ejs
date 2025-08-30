@@ -1,25 +1,26 @@
 <link rel="stylesheet" href="/css/style.css">
 
-<!-- Success -->
-<% if(success && success.length) { %>
+<!-- Success Flash -->
+<% if (typeof success !== "undefined" && success.length) { %>
   <div class="row mt-3">
     <div class="col-12 col-md-8 col-lg-6 mx-auto">
       <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
         <%= success %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
   </div>
 <% } %>
 
-<!-- Error -->
-<% if(error && error.length) { %>
+<!-- Error Flash -->
+<% if (typeof error !== "undefined" && error.length) { %>
   <div class="row mt-3">
     <div class="col-12 col-md-8 col-lg-6 mx-auto">
       <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
         <%= error %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
   </div>
 <% } %>
+
