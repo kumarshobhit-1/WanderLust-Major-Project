@@ -5,66 +5,79 @@
       <span class="d-none d-sm-inline">Wanderlust</span>
     </a>
 
-    <!-- Toggle button for mobile -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/about"><i class="fa-solid fa-map"></i> About</a>
-        </li>
-      </ul>
 
-      <!-- Search box -->
-      <!-- Search box -->
-<form class="d-flex my-2 my-md-0 mx-auto navbar-search" action="/listings/search" method="GET" role="search">
-  <input class="form-control me-2 search-inp" type="search" name="location" placeholder="Search destinations">
-  <button class="btn search-btn" type="submit">
-    <i class="fa-solid fa-magnifying-glass"></i> Search
-  </button>
-</form>
+      <form class="d-none d-md-flex my-2 my-md-0 mx-auto navbar-search" action="/listings/search" method="GET" role="search">
+        <input class="form-control me-2 search-inp" type="search" name="location" placeholder="Search destinations">
+        <button class="btn search-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i> Search
+        </button>
+      </form>
 
-
-      <!-- Right links -->
       <ul class="navbar-nav ms-md-3 mt-2 mt-md-0">
-  <li class="nav-item">
-    <a class="nav-link" href="/listings/new">
-      <i class="fa-solid fa-house"></i> Host
-    </a>
-  </li>
 
-  <% if (!currUser) { %>
-    <!-- Agar user login nahi hai -->
-    <li class="nav-item">
-      <a class="nav-link" href="/signup">
-        <i class="fa-solid fa-user-plus"></i> Sign up
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/login">
-        <i class="fa-solid fa-right-to-bracket"></i> Log in
-      </a>
-    </li>
-  <% } else { %>
-    <!-- Agar user login hai -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fa-solid fa-gauge"></i> Dashboard
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="dashboardDropdown">
-        <li><a class="dropdown-item" href="/dashboard"><i class="fa-solid fa-user"></i> Profile</a></li>
-        <li><a class="dropdown-item" href="/settings"><i class="fa-solid fa-gear"></i> Settings</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="/listings/new">
+            <i class="fa-solid fa-plus me-2 text-success"></i>Add Listing
+          </a>
+        </li>
+
+        <% if (typeof currUser === "undefined" || !currUser) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">
+              <i class="fa-solid fa-user-plus text-info"></i> Sign up
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">
+              <i class="fa-solid fa-right-to-bracket text-primary"></i> Log in
+            </a>
+          </li>
+
+        <% } else { %>
+          <li class="nav-item d-md-none">
+            <a class="nav-link" href="/dashboard">
+              <i class="fa-solid fa-user text-dark"></i> Profile
+            </a>
+          </li>
+          <li class="nav-item d-md-none">
+            <a class="nav-link" href="/settings">
+              <i class="fa-solid fa-gear text-warning"></i> Settings
+            </a>
+          </li>
+          <li class="nav-item d-md-none">
+            <a class="nav-link text-danger" href="/logout">
+              <i class="fa-solid fa-right-from-bracket me-2"></i>Log out
+            </a>
+          </li>
+
+          <li class="nav-item dropdown d-none d-md-block">
+            <a class="nav-link dropdown-toggle" href="#" id="accountMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user text-dark"></i> Account
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountMenu">
+              <li><a class="dropdown-item" href="/dashboard"><i class="fa-solid fa-user text-dark"></i> Profile</a></li>
+              <li><a class="dropdown-item" href="/settings"><i class="fa-solid fa-gear text-warning"></i> Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+            </ul>
+          </li>
+        <% } %>
+
       </ul>
-    </li>
-  <% } %>
-</ul>
-
-
     </div>
   </div>
 </nav>
+
+
+      <!-- ✅ Mobile search bar (hamesha bahar) -->
+    <!-- <form class="d-flex d-md-none mx-auto my-2 w-100 px-2" action="/listings/search" method="GET" role="search">
+      <input class="form-control me-2 search-inp" type="search" name="location" placeholder="Search destinations">
+      <button class="btn search-btn" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form> -->
