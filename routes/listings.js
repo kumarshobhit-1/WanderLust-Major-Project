@@ -7,8 +7,11 @@ const multer = require("multer");
 const { storage } = require("../cloudConfig.js");
 const upload = multer({ storage });
 const Listing = require("../models/listing");
+const csurf = require("csurf"); 
 
-// ✅ Search route sabse upar rakho (/:id se pehle)
+const csrfProtection = csurf({ cookie: true }); 
+
+
 router.get("/search", async (req, res) => {
   const { location } = req.query;
 
@@ -19,7 +22,7 @@ router.get("/search", async (req, res) => {
 
   try {
     const listings = await Listing.find({
-      location: { $regex: new RegExp(location, "i") } // case-insensitive search
+      location: { $regex: new RegExp(location, "i") }
     });
 
     if (listings.length === 0) {
@@ -35,26 +38,33 @@ router.get("/search", async (req, res) => {
   }
 });
 
-router
-.route("/")
-.get(wrapAsync(listingController.index))
-.post(isLoggedIn,  upload.single('listing[image]'), validateListings, wrapAsync(listingController.createListing));
+router.get("/new", isLoggedIn, csrfProtection, listingController.renderNewForm);
 
-
-// new route
-router.get("/new", isLoggedIn, listingController.renderNewForm);
 
 router
-.route("/:id")
-.get(wrapAsync(listingController.showListing))
-.put(isLoggedIn, isOwner, upload.single('listing[image]'), validateListings, wrapAsync(listingController.updateListing))
-.delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
+  .route("/")
+  .get(wrapAsync(listingController.index))
+  .post(
+    isLoggedIn,
+    upload.single("listing[image]"), 
+    csrfProtection,
+    validateListings,
+    wrapAsync(listingController.createListing)
+  );
 
+router
+  .route("/:id")
+  .get(csrfProtection, wrapAsync(listingController.showListing))
+  .put(
+    isLoggedIn,
+    isOwner,
+    upload.single("listing[image]"),
+    csrfProtection,
+    validateListings,
+    wrapAsync(listingController.updateListing)
+  )
+  .delete(isLoggedIn, isOwner, csrfProtection, wrapAsync(listingController.destroyListing));
 
-
-// Edit route
-router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.editListing));
-
+router.get("/:id/edit", isLoggedIn, isOwner, csrfProtection, wrapAsync(listingController.editListing));
 
 module.exports = router;
-
